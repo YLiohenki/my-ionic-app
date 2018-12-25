@@ -1,10 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Хаха</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+<ion-content padding class="home_content">
+  <div class="home_wrapper">
+    <div class="home_text">
+      <p color="dark" class="home_title">Stupidity detector</p>
+      <p color="dark" class="home_description">Hold the phone close to a person whose opinion you want to test and press the red button.</p>
+    </div>
+    <div class="radar">
+      <div class="pointer"></div>
+      <div class="shadow" [ngClass]="{'home_shadow_red_show': playingAlert, 'home_shadow_green_show': radarWorking}"></div>
+    </div>
+    <button class="home_button" (touchstart)="interact()" (click)="interact()">Detect</button>
+  </div>
+  <div class="home_sound-icon" [ngClass]="{'home_sound-icon--disabled': soundDisabled}" (click)="soundChange()"></div>
+  <div class="home_popup-alert" [ngClass]="{'home_popup-alert--show-alert': playingAlert, 'home_popup-alert--show-no-detection': playingNoDetection}" [innerHtml]="playingAlert ? 'WARNING!<br />HIGH DENSITY OF STUPIDITY': 'ABSOLUTELY CORRECT OPINION'"></div>
 </ion-content>

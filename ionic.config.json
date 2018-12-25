@@ -1,6 +1,8 @@
 {
-  "name": "myApp",
-  "integrations": {},
+  "name": "Stupidity-detector",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "pro_id": "6a77a86e"
 }

@@ -1,0 +1,1 @@
+export const ALARM_SOUND_ID: string = 'ALARM_SOUND_ID';

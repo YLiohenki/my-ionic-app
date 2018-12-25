@@ -1,1 +1,187 @@
+$radarSize: 300px;
 
+.home_content {
+    width: 100vw;
+    height: 100vh;
+
+    .home_sound-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: url('/assets/icon/sound.png') no-repeat 50% 50%;
+        background-size: cover;
+        height: 32px;
+        width: 32px;
+
+        &.home_sound-icon--disabled {
+            -webkit-filter: opacity(.5) drop-shadow(0 0 0 red);
+            filter: opacity(.5) drop-shadow(0 0 0 red);
+
+            &:before {
+                position: absolute;
+                left: 14px;
+                top: -4px;
+                content: ' ';
+                height: 40px;
+                width: 4px;
+                background-color: red;
+                opacity: 0.5;
+                transform: rotate(45deg);
+            }
+
+        }
+    }
+
+    .home_popup-alert {
+        display: none;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-size: 45px;
+        text-align: center;
+        vertical-align: middle;
+
+        &--show-alert {
+            animation: shadow 1s infinite ease;
+            box-shadow: 0 0 45px 15px #A51414;
+            background-color: #A51414;
+            display: block;
+        }
+
+        &--show-no-detection {
+            box-shadow: 0 0 45px 15px #00CE00;
+            background-color: #00CE00;
+            display: block;
+        }
+    }
+
+    .home_wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: center;
+        height: 100%;
+        width: 100%;
+
+        .home_text {
+            padding-top: 20px;
+
+            .home_title {
+                text-align: center;
+                font-size: xx-large;
+            }
+
+            .home_description {
+                text-align: center;
+                font-size: medium;
+            }
+
+        }
+
+        .home_button {
+            height: 15%;
+            border-radius: 30px;
+            background-color: #b12f2f;
+            color: black;
+            font-size: 26px;
+            user-select: none;
+            outline: none;
+        }
+
+
+        .radar {
+            background: url('/assets/image/radar.png') no-repeat 50% 50%;
+            width: $radarSize;
+            height: $radarSize;
+            position: relative;
+            background-size: $radarSize $radarSize;
+            left: 50%;
+            top: 10%;
+            margin-left: -$radarSize / 2;
+            margin-top: -$radarSize / 2;
+        }
+
+        .radar .pointer {
+            position: absolute;
+            z-index: 1024;
+            left: 10.5820106%;
+            right: 10.5820106%;
+            top: 10.5820106%;
+            bottom: 50%;
+            will-change: transform;
+            transform-origin: 50% 100%;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            background-image: linear-gradient(135deg,
+                rgba(5, 162, 5, 0.8) 0%,
+                rgba(0, 0, 0, 0.02) 70%,
+                rgba(0, 0, 0, 0) 100%);
+            clip-path: polygon(100% 0,
+                100% 10%, //控制扇形角度 100% => 135deg
+                50% 100%, 0 100%, 0 0);
+
+            animation: rotate360 3s infinite linear;
+        }
+
+        .radar .pointer:after {
+            content: "";
+            position: absolute;
+            width: 50%;
+            bottom: -1px;
+            border-top: 2px solid rgba(0, 206, 0, 0.8);
+            box-shadow: 0 0 3px rgba(0, 206, 0, 0.6);
+            border-radius: 9px;
+        }
+
+        .shadow {
+            position: absolute;
+            left: 11%;
+            top: 11%;
+            right: 11%;
+            bottom: 11%;
+            margin: auto;
+            border-radius: 9999px;
+
+            display: none;
+
+            &.home_shadow_red_show {
+                display: block;
+                animation: shadow .33s infinite ease;
+                box-shadow: 0 0 180px 90px #A51414;
+            }
+
+            &.home_shadow_green_show {
+                display: block;
+                animation: shadow 1s infinite ease;
+                box-shadow: 0 0 90px 30px #00CE00;
+            }
+        }
+
+
+        @keyframes rotate360 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        @keyframes shadow {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+    }
+}
